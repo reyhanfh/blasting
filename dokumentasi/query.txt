@@ -1,0 +1,6 @@
+Roomtype
+========
+lama :
+SELECT * FROM db_newbooking1.tbl_roomhotel
+LEFT JOIN  db_newbooking1.tbl_roomtype ON tbl_roomhotel.idroomtype=tbl_roomtype.idroomtype
+WHERE tbl_roomhotel.idhotel=221

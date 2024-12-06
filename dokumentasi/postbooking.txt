@@ -1,0 +1,15 @@
+{
+      'idrateallotment' : number,
+      'checking'        : date,
+      'checkout'        : date,
+      'rooms'           : number,
+      'tamu'            : {
+                  'firstname' : String,
+                  'lastname'  : String,
+                  'email'     : String,
+                  'kota'      : String,
+                  'negara'    : String,
+                  'kodepos'   : String,  //boleh kosong
+                  'phone'     : String,
+            }
+}

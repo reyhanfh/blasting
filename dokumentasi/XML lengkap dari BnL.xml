@@ -1,0 +1,199 @@
+XML lengkap dari BnL
+
+retrieve data
+=============
+request:
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <wsse:Security soap:mustUnderstand="1"
+            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:UsernameToken>
+                <wsse:Username>USERNAME</wsse:Username>
+            	<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">SCRET</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <OTA_HotelAvailRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="1.0"
+            TimeStamp="2022-12-01T13:40:57+07:00" EchoToken="63884c79994c8" AvailRatesOnly="true">
+                  <AvailRequestSegments>
+                        <AvailRequestSegment AvailReqType="Room">
+                              <HotelSearchCriteria>
+                                    <Criterion>
+                                          <HotelRef HotelCode="kay"/>
+                                    </Criterion>
+                              </HotelSearchCriteria>
+                        </AvailRequestSegment>
+                  </AvailRequestSegments>
+            </OTA_HotelAvailRQ>
+    </soap:Body>
+</soap:Envelope>
+
+respon:
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Header
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:Security soap:mustUnderstand="1"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <wsse:UsernameToken>
+                  <wsse:Username>USERNAME</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">SCRET</wsse:Password>
+                  </wsse:UsernameToken>
+            </wsse:Security>
+      </soap:Header>
+      <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <OTA_HotelAvailRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2013-06-25T12:38:48+10:00" EchoToken="86167506-9ed2-4351-a2b5-909dfae611ac" Version="1.0">
+      <Success/>
+      <RoomStays>
+            <RoomStay>
+                  <RoomTypes>
+                  <RoomType RoomTypeCode="3104">
+                        <RoomDescription Name="Deluxe Room"/>
+                  </RoomType>
+                  </RoomTypes>
+                  <RatePlans>
+                  <RatePlan RatePlanCode="4080">
+                        <RatePlanDescription Name="Normal, Default Promotions.">
+                              <Text>Default Promotions.</Text>
+                        </RatePlanDescription>
+                  </RatePlan>
+                  </RatePlans>
+            </RoomStay>
+            <RoomStay>
+                  <RoomTypes>
+                  <RoomType RoomTypeCode="3104">
+                        <RoomDescription Name="Deluxe Room"/>
+                  </RoomType>
+                  </RoomTypes>
+                  <RatePlans>
+                  <RatePlan RatePlanCode="4517">
+                        <RatePlanDescription Name="Normal, Discount 10 USD, Stay at least 4 nights and book 1 or more rooms.">
+                        <Text>Discount 10 USD, Stay at least 4 nights and book 1 or more rooms.</Text>
+                        </RatePlanDescription>
+                  </RatePlan>
+                  </RatePlans>
+            </RoomStay>
+      </RoomStays>
+      </OTA_HotelAvailRS>
+      </soap:Body>
+</soap:Envelope>
+
+
+
+push data
+=========
+
+request:
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Header
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:Security soap:mustUnderstand="1"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <wsse:UsernameToken>
+                  <wsse:Username>myhorizon@admin</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">admin@myhorizon</wsse:Password>
+                  </wsse:UsernameToken>
+            </wsse:Security>
+      </soap:Header>
+      <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="1.0" TimeStamp="2022-12-01T14:36:22+07:00" EchoToken="638859767e85b"> <AvailStatusMessages HotelCode="alpome-tras-hotel">
+            <AvailStatusMessage BookingLimit="23">
+            <StatusApplicationControl Start="2022-12-01" End="2022-12-02" InvTypeCode="STD" RatePlanCode="B2C"/>
+            <RestrictionStatus Status="Open" />
+            </AvailStatusMessage>
+            <AvailStatusMessage>
+            <StatusApplicationControl Start="2013-12-03" End="2013-12-04"
+            InvTypeCode="3104" RatePlanCode="4080"/>
+            <LengthsOfStay>
+            <LengthOfStay MinMaxMessageType="SetMinLOS" Time="2"/>
+            </LengthsOfStay>
+            </AvailStatusMessage>
+            <AvailStatusMessage>
+            <StatusApplicationControl Start="2022-12-01" End="2022-12-02" InvTypeCode="STD" RatePlanCode="B2C"/>
+            <RestrictionStatus Status="Closed"/>
+            </AvailStatusMessage>
+            </AvailStatusMessages>
+            </OTA_HotelAvailNotifRQ>
+      </soap:Body>
+</soap:Envelope>
+
+respon:
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Header
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:Security soap:mustUnderstand="1"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <wsse:UsernameToken>
+                  <wsse:Username>myhorizon@admin</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">admin@myhorizon</wsse:Password>
+                  </wsse:UsernameToken>
+            </wsse:Security>
+      </soap:Header>
+      <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <OTA_HotelAvailNotifRSxmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2005-08-01T09:30:47+08:00" EchoToken="abc123" Version="1.0">
+      <Success/>
+      </OTA_HotelAvailNotifRS>
+      </soap:Body>
+</soap:Envelope>
+
+
+
+push Rate
+=========
+
+request :
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Header
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:Security soap:mustUnderstand="1"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <wsse:UsernameToken>
+                  <wsse:Username>myhorizon@admin</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">admin@myhorizon</wsse:Password>
+                  </wsse:UsernameToken>
+            </wsse:Security>
+      </soap:Header>
+      <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <OTA_HotelRateAmountNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2022-12-01T14:40:49+07:00" Version="1.0" EchoToken="63885a816c993">
+            <RateAmountMessages HotelCode="alpome-tras-hotel">
+            <RateAmountMessage>
+            <StatusApplicationControl Start="2022-12-01" End="2022-12-02" InvTypeCode="STD" RatePlanCode="B2C" CurrencyCode="SGD"/>
+            <Rates>
+            <Rate>
+            <BaseByGuestAmts>
+            <BaseByGuestAmt AgeQualifyingCode="10" AmountAfterTax="1234000"/>
+            </BaseByGuestAmts>
+            </Rate>
+            </Rates>
+            </RateAmountMessage>
+            </RateAmountMessages>
+            </OTA_HotelRateAmountNotifRQ>
+      </soap:Body>
+</soap:Envelope>
+
+respon:
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      <soap:Header
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <wsse:Security soap:mustUnderstand="1"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <wsse:UsernameToken>
+                  <wsse:Username>myhorizon@admin</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">admin@myhorizon</wsse:Password>
+                  </wsse:UsernameToken>
+            </wsse:Security>
+      </soap:Header>
+      <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+      
+      </soap:Body>
+</soap:Envelope>
+
+
